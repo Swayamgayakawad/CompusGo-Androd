@@ -1,4 +1,4 @@
-package RoomDB
+package com.example.compusgo.RoomDB
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

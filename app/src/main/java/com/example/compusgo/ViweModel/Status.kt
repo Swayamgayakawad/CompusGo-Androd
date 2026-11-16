@@ -1,4 +1,4 @@
-package ViweModel
+package com.example.compusgo.ViweModel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

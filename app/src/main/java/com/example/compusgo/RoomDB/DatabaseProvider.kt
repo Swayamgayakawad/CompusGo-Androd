@@ -1,4 +1,4 @@
-package RoomDB
+package com.example.compusgo.RoomDB
 
 import android.content.Context
 import androidx.room.Room

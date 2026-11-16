@@ -1,4 +1,4 @@
-package RoomDB
+package com.example.compusgo.RoomDB
 
 
 class StudentRepository(

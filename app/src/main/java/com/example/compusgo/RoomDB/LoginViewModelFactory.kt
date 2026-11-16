@@ -1,8 +1,9 @@
 package ViweModel
 
-import RoomDB.StudentRepository
+import com.example.compusgo.RoomDB.StudentRepository
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.compusgo.ViweModel.LoginViewModel
 
 class LoginViewModelFactory(
     private val repository: StudentRepository

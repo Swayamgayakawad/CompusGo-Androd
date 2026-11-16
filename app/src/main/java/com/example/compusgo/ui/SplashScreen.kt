@@ -1,5 +1,4 @@
-
-package UI
+package com.example.compusgo.ui
 
 import android.media.MediaPlayer
 import androidx.compose.foundation.background
@@ -15,7 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.compusgo.R
-import ViweModel.LoginViewModel
+import com.example.compusgo.ViweModel.LoginViewModel
 import kotlinx.coroutines.delay
 
 @Composable

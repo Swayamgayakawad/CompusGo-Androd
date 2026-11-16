@@ -1,4 +1,4 @@
-package UI
+package com.example.compusgo.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -6,6 +6,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,7 +29,6 @@ import androidx.compose.material.icons.filled.Map
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.QrCode2
-import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Percent
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -116,7 +117,7 @@ fun HomeScreen(navController: NavHostController) {
 
             TimeTabel()
 
-            Body()
+            Body(navController)
 
             Spacer(
                 modifier = Modifier.height(24.dp)
@@ -141,7 +142,7 @@ fun Top() {
 
             Card(
                 modifier = Modifier.size(48.dp),
-                shape = MaterialTheme.shapes.medium,
+
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
                 )
@@ -305,7 +306,7 @@ fun ScheduleItem(
 
 
 @Composable
-fun Body() {
+fun Body(navController: NavHostController) {
 
     Column(
         modifier = Modifier
@@ -337,7 +338,10 @@ fun Body() {
             QuickAccessCard(
                 modifier = Modifier.weight(1f),
                 icon = Icons.Default.QrCode2,
-                title = "QR Code"
+                title = "QR Code",
+                onClick = {
+                    navController.navigate("qr")
+                }
             )
         }
 
@@ -353,13 +357,19 @@ fun Body() {
             QuickAccessCard(
                 modifier = Modifier.weight(1f),
                 icon = Icons.Default.MenuBook,
-                title = "Book Store"
+                title = "Book Store",
+                onClick = {
+                    navController.navigate("book")
+                }
             )
 
             QuickAccessCard(
                 modifier = Modifier.weight(1f),
                 icon = Icons.Default.Fastfood,
-                title = "Canteen"
+                title = "Canteen",
+                onClick = {
+                    navController.navigate("food")
+                }
             )
         }
 
@@ -375,13 +385,19 @@ fun Body() {
             QuickAccessCard(
                 modifier = Modifier.weight(1f),
                 icon = Icons.Default.Map,
-                title = "College Map"
+                title = "College Map",
+                onClick = {
+                    // Navigate to college map
+                }
             )
 
             QuickAccessCard(
                 modifier = Modifier.weight(1f),
                 icon = Icons.Default.CalendarMonth,
-                title = "Calendar"
+                title = "Calendar",
+                onClick = {
+                    // Navigate to calendar
+                }
             )
         }
     }
@@ -392,10 +408,12 @@ fun Body() {
 fun QuickAccessCard(
     modifier: Modifier = Modifier,
     icon: ImageVector,
-    title: String
+    title: String,
+    onClick: () -> Unit = {}
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
 
-    var pressed = false
+    val pressed by interactionSource.collectIsPressedAsState()
 
     val scale by animateFloatAsState(
         targetValue = if (pressed) 0.94f else 1f,
@@ -404,12 +422,11 @@ fun QuickAccessCard(
     )
 
     Card(
+        onClick = onClick,
+        interactionSource = interactionSource,
         modifier = modifier
             .height(125.dp)
-            .scale(scale)
-            .clickable {
-                pressed = !pressed
-            },
+            .scale(scale),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
@@ -418,7 +435,6 @@ fun QuickAccessCard(
             defaultElevation = 3.dp
         )
     ) {
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -426,7 +442,6 @@ fun QuickAccessCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-
             Icon(
                 imageVector = icon,
                 contentDescription = title,
@@ -434,14 +449,11 @@ fun QuickAccessCard(
                 tint = MaterialTheme.colorScheme.primary
             )
 
-            Spacer(
-                modifier = Modifier.height(10.dp)
-            )
+            Spacer(modifier = Modifier.height(10.dp))
 
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSurface
+                style = MaterialTheme.typography.titleMedium
             )
         }
     }

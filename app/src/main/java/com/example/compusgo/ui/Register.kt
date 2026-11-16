@@ -1,6 +1,6 @@
-package UI
+package com.example.compusgo.ui
 
-import ViweModel.LoginViewModel
+import com.example.compusgo.ViweModel.LoginViewModel
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,7 +20,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.compose.foundation.text.KeyboardOptions
 

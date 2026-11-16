@@ -1,8 +1,7 @@
+package com.example.compusgo.ViweModel
 
-package ViweModel
-
-import RoomDB.StudentDB
-import RoomDB.StudentRepository
+import com.example.compusgo.RoomDB.StudentDB
+import com.example.compusgo.RoomDB.StudentRepository
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

@@ -1,11 +1,10 @@
+package com.example.compusgo.ui
 
-package UI
-
-import RoomDB.DatabaseProvider
-import RoomDB.StudentRepository
-import ViweModel.LoginViewModel
+import com.example.compusgo.RoomDB.DatabaseProvider
+import com.example.compusgo.RoomDB.StudentRepository
+import com.example.compusgo.ViweModel.LoginViewModel
 import ViweModel.LoginViewModelFactory
-import ViweModel.Status
+import com.example.compusgo.ViweModel.Status
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
@@ -15,9 +14,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.compusgo.ViweModel.BookStorViweModel
+import com.example.compusgo.viewmodel.*
+
 
 @Composable
 fun AppNav() {
+    val cartViewModel: CartViewModel = viewModel()
+    val bookViewModel: BookStorViweModel = viewModel()
 
     val navController = rememberNavController()
     val context = LocalContext.current
@@ -94,6 +98,31 @@ fun AppNav() {
             } else {
                 LoginScreen(navController, viewModel)
             }
+        }
+        composable("food") {
+            FoodScreen(
+                navController = navController,
+                cartViewModel = cartViewModel
+            )
+        }
+
+        composable("cart") {
+            CartScreen(
+                navController = navController,
+                cartViewModel = cartViewModel
+            )
+        }
+        composable("book") {
+            BookStoreScreen(navController)
+        }
+        composable("book_cart") {
+            BookCartScreen(
+                navController = navController,
+                viewModel = bookViewModel
+            )
+        }
+        composable("qr") {
+            QRScannerScreen(navController)
         }
     }
 }

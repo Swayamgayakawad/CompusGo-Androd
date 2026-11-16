@@ -6,7 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.compusgo.ui.theme.CompusGoTheme
-import UI.AppNav
+import com.example.compusgo.ui.AppNav
 
 class MainActivity : ComponentActivity() {
 

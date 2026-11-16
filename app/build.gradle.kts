@@ -37,6 +37,7 @@ android {
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
@@ -59,4 +60,13 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.camera:camera-camera2:1.4.2")
+    implementation("androidx.camera:camera-lifecycle:1.4.2")
+    implementation("androidx.camera:camera-view:1.4.2")
+    implementation("io.ktor:ktor-client-core:3.6.1")
+    implementation("io.ktor:ktor-client-cio:3.6.1")
+    implementation("io.ktor:ktor-client-content-negotiation:3.6.1")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:3.6.1")
+
+    implementation("com.google.mlkit:barcode-scanning:17.3.0")
 }

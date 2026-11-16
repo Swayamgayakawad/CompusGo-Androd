@@ -1,4 +1,4 @@
-package RoomDB
+package com.example.compusgo.RoomDB
 import androidx.room.Insert
 import androidx.room.Dao
 import androidx.room.Query
